@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Happy Women's Day</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+}
+
+/* BOX */
+
+.container{
+    text-align:center;
+    color:white;
+    max-width:700px;
+    padding:40px;
+    backdrop-filter:blur(8px);
+    background:rgba(255,255,255,0.1);
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+#message{
+    font-size:22px;
+    line-height:1.7;
+    white-space: pre-line;
+}
+
+/* HEART */
+
+.heart{
+    position:absolute;
+    bottom:-30px;
+    color:white;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
+
+/* FLOWER */
+
+.flower{
+    position:absolute;
+    top:-20px;
+    font-size:24px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh) rotate(0deg);
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💐 Happy Women's Day 💐</h1>
+
+<div id="message"></div>
+
+</div>
+
+<script>
+
+/* ===== SỬA LỜI CHÚC Ở ĐÂY ===== */
+
+const text = `
+Chúc cưng 8/3 nhiều niềm vui và ít phải suy nghĩ.
+Việc suy nghĩ cứ để đại ca làm…
+dù nhiều khi đại ca cũng nghĩ không ra.
+`;
+
+/* =============================== */
+
+
+/* HIỆU ỨNG CHỮ ĐÁNH MÁY */
+
+let i = 0;
+
+function typing(){
+
+    if(i < text.length){
+
+        document.getElementById("message").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,40);
+
+    }
+
+}
+
+typing();
+
+
+/* HEART */
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },8000);
+
+}
+
+setInterval(createHeart,300);
+
+
+/* FLOWER */
+
+function createFlower(){
+
+    const flower = document.createElement("div");
+
+    flower.className="flower";
+
+    flower.innerHTML="🌸";
+
+    flower.style.left=Math.random()*100+"vw";
+
+    flower.style.animationDuration=(5+Math.random()*5)+"s";
+
+    document.body.appendChild(flower);
+
+    setTimeout(()=>{
+
+        flower.remove();
+
+    },10000);
+
+}
+
+setInterval(createFlower,500);
+
+</script>
+
+</body>
+</html>
